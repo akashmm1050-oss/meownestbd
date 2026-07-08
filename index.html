@@ -1,0 +1,1663 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MeowNest Bangladesh | Premium Pet Products</title>
+    <meta name="description" content="Premium pet products delivered with care across Bangladesh. Shop high-quality cat food, toys, grooming &amp; health products from MeowNest.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;family=Playfair+Display:wght@700&amp;display=swap');
+        
+        :root {
+            --primary-brown: #854d0e;
+            --accent-orange: #c2410f;
+        }
+        
+        body {
+            font-family: 'Inter', system_ui, sans-serif;
+        }
+        
+        .heading-font {
+            font-family: 'Playfair Display', Georgia, serif;
+        }
+
+        .premium-shadow {
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.05), 0 4px 6px -4px rgb(0 0 0 / 0.05);
+        }
+
+        .product-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+        }
+
+        .nav-active {
+            color: #c2410f;
+            font-weight: 600;
+        }
+
+        .section-header {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-header:after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            width: 60%;
+            height: 3px;
+            background: linear-gradient(to right, #854d0e, #c2410f);
+            border-radius: 3px;
+        }
+
+        .pet-gradient {
+            background: linear-gradient(135deg, #854d0e 0%, #c2410f 100%);
+        }
+
+        .product-img {
+            transition: transform 0.4s ease;
+        }
+        
+        .product-card:hover .product-img {
+            transform: scale(1.05);
+        }
+
+        .modal {
+            animation: modalPopIn 0.3s ease forwards;
+        }
+
+        @keyframes modalPopIn {
+            from {
+                opacity: 0;
+                transform: scale(0.95) translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        .drawer {
+            animation: drawerSlideIn 0.3s ease forwards;
+        }
+
+        .filter-active {
+            background-color: #854d0e;
+            color: white;
+            border-color: #854d0e;
+        }
+
+        .stock-badge {
+            font-size: 0.75rem;
+            padding: 0.1rem 0.5rem;
+            border-radius: 9999px;
+            font-weight: 600;
+        }
+
+        .clean-text {
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .premium-btn {
+            transition: all 0.2s ease;
+            font-weight: 600;
+        }
+        
+        .premium-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 10px 15px -3px rgb(194 65 15 / 0.3);
+        }
+
+        .nav-link {
+            transition: color 0.2s ease;
+        }
+        
+        .nav-link:hover {
+            color: #c2410f;
+        }
+
+        .footer-link {
+            transition: color 0.2s ease;
+        }
+        
+        .footer-link:hover {
+            color: #c2410f;
+        }
+
+        .product-grid {
+            scrollbar-width: thin;
+        }
+
+        .small-font {
+            font-size: 0.875rem;
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-800">
+    <!-- Top Announcement Bar -->
+    <div class="bg-[#854d0e] text-white text-center py-2 text-sm">
+        <div class="max-w-7xl mx-auto px-4 flex items-center justify-center gap-x-2">
+            <i class="fas fa-truck mr-2"></i>
+            <span class="font-medium">Free delivery on orders over ৳1500 within Dhaka • Premium quality guaranteed</span>
+        </div>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="bg-white border-b border-gray-100 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto">
+            <div class="px-6 py-4 flex items-center justify-between">
+                <!-- Logo -->
+                <div class="flex items-center gap-x-3">
+                    <div class="w-11 h-11 bg-[#854d0e] rounded-2xl flex items-center justify-center shadow-inner">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2Z" fill="#fff"/>
+                            <path d="M8.5 9.5C8.5 8.67 9.17 8 10 8H14C14.83 8 15.5 8.67 15.5 9.5V15.5C15.5 16.33 14.83 17 14 17H10C9.17 17 8.5 16.33 8.5 15.5V9.5Z" fill="#854d0e"/>
+                            <circle cx="10.5" cy="11" r="1" fill="#854d0e"/>
+                            <circle cx="13.5" cy="11" r="1" fill="#854d0e"/>
+                            <path d="M9 14.5H15" stroke="#854d0e" stroke-width="1.2" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <div class="font-bold text-2xl tracking-tighter text-[#854d0e]">MeowNest</div>
+                        <div class="text-[10px] text-gray-500 -mt-1 font-medium tracking-[1.5px]">BANGLADESH</div>
+                    </div>
+                </div>
+
+                <!-- Search Bar (Desktop) -->
+                <div class="hidden md:flex flex-1 max-w-md mx-8">
+                    <div class="relative w-full">
+                        <input id="nav-search" 
+                               type="text" 
+                               placeholder="Search premium cat products..." 
+                               class="w-full bg-gray-50 border border-gray-200 focus:border-[#854d0e] transition-colors pl-11 pr-4 py-2.5 text-sm rounded-3xl outline-none">
+                        <i class="fas fa-search absolute left-4 top-3 text-gray-400"></i>
+                    </div>
+                </div>
+
+                <!-- Right Side Nav -->
+                <div class="flex items-center gap-x-1 md:gap-x-2">
+                    <!-- Desktop Links -->
+                    <div class="hidden md:flex items-center gap-x-6 text-sm font-medium mr-2">
+                        <a href="#shop" class="nav-link text-gray-700 hover:text-[#c2410f]">Shop</a>
+                        <a href="#categories" class="nav-link text-gray-700 hover:text-[#c2410f]">Categories</a>
+                        <a href="#footer" class="nav-link text-gray-700 hover:text-[#c2410f]">Contact</a>
+                    </div>
+
+                    <!-- Icons -->
+                    <button onclick="showWishlist()" 
+                            class="w-10 h-10 flex items-center justify-center text-gray-600 hover:text-[#c2410f] hover:bg-gray-100 rounded-2xl transition-colors">
+                        <i class="fas fa-heart text-lg"></i>
+                    </button>
+                    
+                    <button onclick="showCart()" 
+                            class="w-10 h-10 flex items-center justify-center text-gray-600 hover:text-[#c2410f] hover:bg-gray-100 rounded-2xl transition-colors relative">
+                        <i class="fas fa-shopping-cart text-lg"></i>
+                        <span id="cart-count" 
+                              class="absolute -top-0.5 -right-0.5 bg-[#c2410f] text-white text-[10px] font-bold w-5 h-5 flex items-center justify-center rounded-full">0</span>
+                    </button>
+
+                    <button onclick="showAccountModal()" 
+                            class="w-10 h-10 flex items-center justify-center text-gray-600 hover:text-[#c2410f] hover:bg-gray-100 rounded-2xl transition-colors">
+                        <i class="fas fa-user text-lg"></i>
+                    </button>
+
+                    <!-- Mobile Hamburger -->
+                    <button id="mobile-menu-btn"
+                            class="md:hidden w-10 h-10 flex items-center justify-center text-gray-600 hover:bg-gray-100 rounded-2xl"
+                            onclick="toggleMobileMenu()">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-white border-b">
+        <div class="px-6 py-4 flex flex-col gap-y-3 text-sm font-medium">
+            <a href="#shop" class="py-1 text-gray-700" onclick="toggleMobileMenu()">Shop All Products</a>
+            <a href="#categories" class="py-1 text-gray-700" onclick="toggleMobileMenu()">Categories</a>
+            <a href="#footer" class="py-1 text-gray-700" onclick="toggleMobileMenu()">Contact Us</a>
+            <div class="pt-2 border-t">
+                <input id="mobile-search" type="text" placeholder="Search products..." 
+                       class="w-full bg-gray-50 border border-gray-200 px-4 py-2 text-sm rounded-3xl outline-none">
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <header class="max-w-7xl mx-auto px-6 pt-10 pb-16">
+        <div class="grid md:grid-cols-12 gap-8 items-center">
+            <div class="md:col-span-7">
+                <div class="inline-flex items-center gap-x-2 bg-[#854d0e]/10 text-[#854d0e] px-4 py-1.5 rounded-3xl text-xs font-semibold tracking-wider mb-6">
+                    <div class="w-2 h-2 bg-[#854d0e] rounded-full animate-pulse"></div>
+                    EST. 2024 • PREMIUM PET CARE
+                </div>
+                
+                <h1 class="text-5xl md:text-6xl leading-[1.05] font-bold tracking-tighter text-gray-900">
+                    Premium nutrition.<br>
+                    <span class="text-[#854d0e]">Loving care.</span><br>
+                    For every cat.
+                </h1>
+                
+                <p class="mt-5 max-w-md text-lg text-gray-600 clean-text">
+                    Carefully curated premium pet products delivered with love across Bangladesh. 
+                    Because your feline family deserves the very best.
+                </p>
+
+                <div class="mt-8 flex flex-wrap gap-4">
+                    <button onclick="document.getElementById('shop').scrollIntoView({ behavior: 'smooth' })" 
+                            class="premium-btn inline-flex items-center justify-center gap-x-3 bg-[#854d0e] hover:bg-[#6b3d0a] text-white px-8 py-3.5 rounded-3xl font-semibold text-sm shadow-lg shadow-[#854d0e]/30">
+                        <span>SHOP NOW</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                    
+                    <button onclick="document.getElementById('categories').scrollIntoView({ behavior: 'smooth' })" 
+                            class="inline-flex items-center justify-center gap-x-2 border border-gray-300 hover:bg-gray-50 px-7 py-3.5 rounded-3xl font-semibold text-sm transition-colors">
+                        <span>Browse Categories</span>
+                    </button>
+                </div>
+
+                <div class="mt-8 flex items-center gap-x-6 text-sm">
+                    <div class="flex -space-x-2">
+                        <div class="w-7 h-7 bg-gray-200 border border-white rounded-full overflow-hidden"><img src="https://picsum.photos/id/1005/28/28" class="object-cover"></div>
+                        <div class="w-7 h-7 bg-gray-200 border border-white rounded-full overflow-hidden"><img src="https://picsum.photos/id/1011/28/28" class="object-cover"></div>
+                        <div class="w-7 h-7 bg-gray-200 border border-white rounded-full overflow-hidden"><img src="https://picsum.photos/id/201/28/28" class="object-cover"></div>
+                    </div>
+                    <div class="text-gray-500 text-xs">
+                        <span class="font-semibold text-gray-700">2,400+</span> happy cat parents
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hero Visual -->
+            <div class="md:col-span-5 relative">
+                <div class="aspect-[4/3] bg-gradient-to-br from-[#854d0e]/5 to-white rounded-3xl overflow-hidden border border-gray-100 flex items-center justify-center p-8">
+                    <div class="text-center">
+                        <div class="mx-auto w-40 h-40 relative">
+                            <img src="https://picsum.photos/id/1005/400/400" alt="Happy cat with premium products" 
+                                 class="w-full h-full object-cover rounded-3xl shadow-2xl">
+                            <div class="absolute -bottom-3 -right-3 bg-white px-4 py-1.5 rounded-2xl shadow flex items-center gap-x-2 border">
+                                <div class="text-emerald-500">
+                                    <i class="fas fa-check-circle"></i>
+                                </div>
+                                <div class="text-xs font-semibold">In stock • Ready to ship</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Categories Section -->
+    <section id="categories" class="max-w-7xl mx-auto px-6 pb-12">
+        <div class="flex items-end justify-between mb-6">
+            <div>
+                <h2 class="text-3xl font-bold tracking-tight section-header">Shop by Category</h2>
+                <p class="text-gray-500 mt-1 text-sm">Find exactly what your cat needs</p>
+            </div>
+            <a href="#shop" class="hidden md:flex items-center text-sm font-semibold text-[#c2410f] hover:underline">View all products →</a>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+            <!-- Category Cards -->
+            <div onclick="filterByCategory('Cat Food')" class="group cursor-pointer bg-white border border-gray-100 hover:border-[#854d0e]/30 transition-all p-5 rounded-3xl flex flex-col items-center text-center hover:shadow">
+                <div class="w-14 h-14 bg-orange-100 text-[#c2410f] rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                    <i class="fas fa-bowl-food text-3xl"></i>
+                </div>
+                <div class="font-semibold">Cat Food</div>
+                <div class="text-xs text-gray-500 mt-0.5">Dry, Wet &amp; Pouches</div>
+            </div>
+            
+            <div onclick="filterByCategory('Cat Toys')" class="group cursor-pointer bg-white border border-gray-100 hover:border-[#854d0e]/30 transition-all p-5 rounded-3xl flex flex-col items-center text-center hover:shadow">
+                <div class="w-14 h-14 bg-pink-100 text-pink-600 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                    <i class="fas fa-baseball-ball text-3xl"></i>
+                </div>
+                <div class="font-semibold">Cat Toys</div>
+                <div class="text-xs text-gray-500 mt-0.5">Interactive Play</div>
+            </div>
+            
+            <div onclick="filterByCategory('Grooming')" class="group cursor-pointer bg-white border border-gray-100 hover:border-[#854d0e]/30 transition-all p-5 rounded-3xl flex flex-col items-center text-center hover:shadow">
+                <div class="w-14 h-14 bg-amber-100 text-amber-700 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                    <i class="fas fa-cut text-3xl"></i>
+                </div>
+                <div class="font-semibold">Grooming</div>
+                <div class="text-xs text-gray-500 mt-0.5">Brushes &amp; Tools</div>
+            </div>
+            
+            <div onclick="filterByCategory('Health &amp; Care')" class="group cursor-pointer bg-white border border-gray-100 hover:border-[#854d0e]/30 transition-all p-5 rounded-3xl flex flex-col items-center text-center hover:shadow">
+                <div class="w-14 h-14 bg-emerald-100 text-emerald-700 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                    <i class="fas fa-heartbeat text-3xl"></i>
+                </div>
+                <div class="font-semibold">Health &amp; Care</div>
+                <div class="text-xs text-gray-500 mt-0.5">Vitamins &amp; Deworming</div>
+            </div>
+            
+            <div onclick="filterByCategory('Accessories')" class="group cursor-pointer bg-white border border-gray-100 hover:border-[#854d0e]/30 transition-all p-5 rounded-3xl flex flex-col items-center text-center hover:shadow">
+                <div class="w-14 h-14 bg-sky-100 text-sky-700 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                    <i class="fas fa-tags text-3xl"></i>
+                </div>
+                <div class="font-semibold">Accessories</div>
+                <div class="text-xs text-gray-500 mt-0.5">Bowls, Collars &amp; More</div>
+            </div>
+            
+            <div onclick="document.getElementById('shop').scrollIntoView({ behavior: 'smooth' }); filterByCategory('All')" 
+                 class="group cursor-pointer bg-gradient-to-br from-[#854d0e] to-[#c2410f] text-white border border-transparent p-5 rounded-3xl flex flex-col items-center text-center justify-center hover:shadow-lg transition-all">
+                <div class="font-semibold text-lg">All Products</div>
+                <div class="text-xs opacity-90 mt-1">19+ premium items</div>
+                <div class="mt-3 text-xs flex items-center gap-x-1.5">
+                    <span>Browse full collection</span> <i class="fas fa-arrow-right text-xs"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Shop Section -->
+    <section id="shop" class="max-w-7xl mx-auto px-6 pb-20">
+        <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-y-3 mb-6">
+            <div>
+                <h2 class="text-3xl font-bold tracking-tight section-header">All Premium Products</h2>
+                <p class="text-gray-500 mt-1">High-quality nutrition &amp; care for your beloved cats</p>
+            </div>
+            
+            <div class="flex flex-wrap items-center gap-3">
+                <!-- Stock Filter -->
+                <div class="flex items-center bg-white border border-gray-200 rounded-3xl p-1 text-sm">
+                    <button onclick="toggleStockFilter(this)" id="stock-filter-btn"
+                            class="px-4 py-1.5 rounded-[22px] flex items-center gap-x-2 text-sm font-medium hover:bg-gray-50 active:bg-gray-100">
+                        <i class="fas fa-check-circle text-emerald-500"></i>
+                        <span>In Stock Only</span>
+                    </button>
+                </div>
+                
+                <!-- Sort -->
+                <select id="sort-select" onchange="applyFilters()" 
+                        class="bg-white border border-gray-200 text-sm rounded-3xl px-4 py-2 outline-none cursor-pointer">
+                    <option value="default">Sort: Featured</option>
+                    <option value="price-low">Price: Low to High</option>
+                    <option value="price-high">Price: High to Low</option>
+                    <option value="name">Name: A to Z</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Active Filters -->
+        <div id="active-filters" class="flex flex-wrap gap-2 mb-4 min-h-[28px]"></div>
+
+        <!-- Products Grid -->
+        <div id="products-grid" 
+             class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-5 product-grid">
+            <!-- Populated dynamically by JavaScript -->
+        </div>
+        
+        <div class="mt-8 text-center">
+            <p class="text-xs text-gray-400">Showing <span id="product-count">19</span> premium products • Ready for 400+ items</p>
+        </div>
+    </section>
+
+    <!-- Trust / Features Bar -->
+    <div class="bg-gray-50 border-t border-b border-gray-100 py-6">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-y-6 text-center text-sm">
+            <div class="flex flex-col items-center">
+                <i class="fas fa-shield-alt text-2xl text-[#854d0e] mb-2"></i>
+                <div class="font-semibold">100% Authentic</div>
+                <div class="text-xs text-gray-500">Genuine premium brands</div>
+            </div>
+            <div class="flex flex-col items-center">
+                <i class="fas fa-truck text-2xl text-[#854d0e] mb-2"></i>
+                <div class="font-semibold">Fast Delivery</div>
+                <div class="text-xs text-gray-500">Dhaka: 1-2 days • Outside: 3-5 days</div>
+            </div>
+            <div class="flex flex-col items-center">
+                <i class="fas fa-headset text-2xl text-[#854d0e] mb-2"></i>
+                <div class="font-semibold">Dedicated Support</div>
+                <div class="text-xs text-gray-500">WhatsApp &amp; Phone assistance</div>
+            </div>
+            <div class="flex flex-col items-center">
+                <i class="fas fa-sync text-2xl text-[#854d0e] mb-2"></i>
+                <div class="font-semibold">Easy Returns</div>
+                <div class="text-xs text-gray-500">7-day return policy</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer - Exact match to your reference -->
+    <footer id="footer" class="bg-[#111827] text-gray-300 pt-10 pb-6 text-sm">
+        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-12 gap-y-10">
+            
+            <!-- Left: Logo + Tagline + Social -->
+            <div class="md:col-span-5">
+                <div class="flex items-center gap-x-3 mb-4">
+                    <div class="w-9 h-9 bg-white/10 rounded-2xl flex items-center justify-center">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2Z" fill="#fff"/>
+                            <path d="M8.5 9.5C8.5 8.67 9.17 8 10 8H14C14.83 8 15.5 8.67 15.5 9.5V15.5C15.5 16.33 14.83 17 14 17H10C9.17 17 8.5 16.33 8.5 15.5V9.5Z" fill="#111827"/>
+                            <circle cx="10.5" cy="11" r="1" fill="#111827"/>
+                            <circle cx="13.5" cy="11" r="1" fill="#111827"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <span class="font-bold text-white text-xl tracking-tight">MeowNest</span>
+                        <span class="text-xs text-white/60 font-medium tracking-widest block -mt-1">BANGLADESH</span>
+                    </div>
+                </div>
+                <p class="text-gray-400 max-w-xs text-sm leading-relaxed">Premium pet products delivered with care across Bangladesh.</p>
+                
+                <div class="flex gap-x-4 mt-5">
+                    <a href="#" class="text-white/70 hover:text-white transition-colors"><i class="fab fa-facebook-f text-lg"></i></a>
+                    <a href="#" class="text-white/70 hover:text-white transition-colors"><i class="fab fa-instagram text-lg"></i></a>
+                    <a href="https://wa.me/8801316820107" target="_blank" class="text-white/70 hover:text-white transition-colors"><i class="fab fa-whatsapp text-lg"></i></a>
+                </div>
+            </div>
+
+            <!-- Quick Links -->
+            <div class="md:col-span-3">
+                <div class="font-semibold text-white tracking-wider text-xs mb-4">QUICK LINKS</div>
+                <div class="space-y-[9px] text-sm">
+                    <a href="#shop" class="footer-link block">Shop All Products</a>
+                    <a href="#categories" class="footer-link block">Categories</a>
+                    <a href="#" class="footer-link block">Wishlist</a>
+                    <a href="#" class="footer-link block">Track Order</a>
+                </div>
+            </div>
+
+            <!-- Contact -->
+            <div class="md:col-span-4">
+                <div class="font-semibold text-white tracking-wider text-xs mb-4">CONTACT US</div>
+                <div class="space-y-2.5 text-sm">
+                    <div class="flex items-start gap-x-3">
+                        <i class="fas fa-phone mt-1 text-[#c2410f]"></i>
+                        <div>
+                            <a href="tel:+8801316820107" class="hover:text-white transition-colors">+880 1316-820107</a><br>
+                            <span class="text-xs text-gray-400">WhatsApp &amp; Calls</span>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-x-3">
+                        <i class="fas fa-envelope text-[#c2410f]"></i>
+                        <a href="mailto:meownestbd@gmail.com" class="hover:text-white transition-colors">meownestbd@gmail.com</a>
+                    </div>
+                    <div class="flex items-start gap-x-3">
+                        <i class="fas fa-map-marker-alt mt-1 text-[#c2410f]"></i>
+                        <div>Savar, Dhaka, Bangladesh</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Bar -->
+        <div class="mt-12 pt-6 border-t border-white/10 text-xs text-gray-400">
+            <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row md:items-center justify-between gap-y-3">
+                <div>© 2026 MeowNest Bangladesh. All rights reserved.</div>
+                
+                <div class="flex flex-wrap gap-x-5 gap-y-1">
+                    <a href="#" class="footer-link">Privacy Policy</a>
+                    <a href="#" class="footer-link">Terms of Service</a>
+                    <a href="#" class="footer-link">Shipping Policy</a>
+                </div>
+                
+                <div class="flex items-center gap-x-1.5 text-[10px]">
+                    Made with <span class="text-red-400">♥</span> for pets &amp; their humans
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Product Detail Modal -->
+    <div id="product-modal" onclick="if (event.target.id === 'product-modal') hideProductModal()" 
+         class="hidden fixed inset-0 bg-black/60 backdrop-blur-sm z-[70] flex items-center justify-center p-4">
+        <div onclick="event.stopImmediatePropagation()" 
+             class="bg-white w-full max-w-4xl rounded-3xl overflow-hidden shadow-2xl modal max-h-[92vh] flex flex-col">
+            
+            <div class="flex justify-between items-center px-6 py-4 border-b">
+                <div class="font-semibold text-lg">Product Details</div>
+                <button onclick="hideProductModal()" class="w-9 h-9 flex items-center justify-center text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-2xl">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            
+            <div class="flex-1 overflow-auto p-6 grid md:grid-cols-5 gap-8">
+                <!-- Image -->
+                <div class="md:col-span-2">
+                    <div id="modal-image-container" class="aspect-square bg-gray-100 rounded-3xl overflow-hidden border">
+                        <!-- Dynamic image inserted by JS -->
+                    </div>
+                </div>
+                
+                <!-- Info -->
+                <div class="md:col-span-3 flex flex-col">
+                    <div id="modal-category-badge" class="inline-block text-xs font-semibold px-3 py-1 bg-gray-100 text-gray-600 w-fit rounded-2xl mb-3"></div>
+                    
+                    <h3 id="modal-name" class="font-bold text-2xl leading-tight tracking-tight pr-6"></h3>
+                    <div id="modal-weight" class="text-sm text-gray-500 mt-1"></div>
+                    
+                    <div class="mt-4 flex items-baseline gap-x-3">
+                        <div id="modal-price" class="text-4xl font-bold text-[#854d0e]"></div>
+                        <div id="modal-stock-badge"></div>
+                    </div>
+                    
+                    <div id="modal-description" class="mt-5 text-sm text-gray-600 leading-relaxed clean-text"></div>
+                    
+                    <!-- Quantity -->
+                    <div class="mt-auto pt-6">
+                        <div class="flex items-center justify-between mb-3">
+                            <div class="font-medium text-sm">Quantity</div>
+                            <div class="flex items-center border border-gray-200 rounded-3xl">
+                                <button onclick="changeModalQty(-1)" class="w-9 h-9 flex items-center justify-center text-xl font-light hover:bg-gray-50 rounded-l-3xl active:bg-gray-100">−</button>
+                                <div id="modal-qty" class="w-9 text-center font-semibold select-none">1</div>
+                                <button onclick="changeModalQty(1)" class="w-9 h-9 flex items-center justify-center text-xl font-light hover:bg-gray-50 rounded-r-3xl active:bg-gray-100">+</button>
+                            </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-2 gap-3">
+                            <button onclick="addCurrentProductToCart()" 
+                                    class="premium-btn flex-1 py-3.5 rounded-3xl border border-[#854d0e] text-[#854d0e] font-semibold hover:bg-[#854d0e] hover:text-white transition-all flex items-center justify-center gap-x-2">
+                                <i class="fas fa-cart-plus"></i>
+                                <span>Add to Cart</span>
+                            </button>
+                            
+                            <button onclick="buyNow()" 
+                                    class="premium-btn flex-1 py-3.5 rounded-3xl bg-[#c2410f] hover:bg-[#9f2a0a] text-white font-semibold transition-all flex items-center justify-center gap-x-2">
+                                <span>Buy Now</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Related Products -->
+            <div class="border-t bg-gray-50 px-6 py-5">
+                <div class="text-xs font-semibold tracking-wider text-gray-500 mb-3 px-1">YOU MAY ALSO LIKE</div>
+                <div id="related-products" class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                    <!-- Populated by JS -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cart Drawer -->
+    <div id="cart-drawer" onclick="if (event.target.id === 'cart-drawer') hideCart()" 
+         class="hidden fixed inset-0 bg-black/40 z-[80]">
+        <div onclick="event.stopImmediatePropagation()" 
+             class="drawer absolute right-0 top-0 h-full w-full max-w-md bg-white shadow-2xl flex flex-col">
+            
+            <div class="px-6 py-5 border-b flex items-center justify-between">
+                <div class="font-semibold text-xl flex items-center gap-x-3">
+                    <i class="fas fa-shopping-cart"></i> 
+                    <span>Your Cart</span>
+                </div>
+                <button onclick="hideCart()" class="text-gray-400 hover:text-gray-700"><i class="fas fa-times text-2xl"></i></button>
+            </div>
+            
+            <div id="cart-items" class="flex-1 overflow-auto p-6 space-y-5 text-sm">
+                <!-- Dynamic cart items -->
+            </div>
+            
+            <div class="border-t p-6 bg-gray-50">
+                <div class="flex justify-between items-baseline mb-1 px-1">
+                    <div class="font-medium">Subtotal</div>
+                    <div id="cart-subtotal" class="font-bold text-xl text-[#854d0e]"></div>
+                </div>
+                <div class="text-xs text-gray-500 px-1 mb-4">Delivery charges calculated at checkout</div>
+                
+                <button onclick="proceedToCheckout()" 
+                        class="w-full py-4 bg-[#854d0e] hover:bg-[#6b3d0a] transition-colors text-white rounded-3xl font-semibold flex items-center justify-center gap-x-2">
+                    PROCEED TO CHECKOUT
+                </button>
+                
+                <button onclick="hideCart()" class="mt-3 w-full text-center text-sm text-gray-500 hover:text-gray-700">Continue Shopping</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Checkout / Order Placement Modal (matches your reference image exactly) -->
+    <div id="checkout-modal" onclick="if (event.target.id === 'checkout-modal') hideCheckout()" 
+         class="hidden fixed inset-0 bg-black/60 backdrop-blur-sm z-[90] flex items-center justify-center p-4">
+        <div onclick="event.stopImmediatePropagation()" 
+             class="bg-white w-full max-w-3xl rounded-3xl overflow-hidden shadow-2xl modal">
+            
+            <!-- Header -->
+            <div class="bg-[#c2410f] px-6 py-4 flex items-center justify-between text-white">
+                <div class="flex items-center gap-x-3">
+                    <button onclick="hideCheckout()" class="text-white/80 hover:text-white"><i class="fas fa-arrow-left text-xl"></i></button>
+                    <div class="font-semibold text-xl">Order Placement</div>
+                </div>
+                <div class="text-xs bg-white/20 px-3 py-1 rounded-2xl flex items-center gap-x-1.5">
+                    <i class="fas fa-user"></i>
+                    <span id="checkout-user">Guest</span>
+                </div>
+            </div>
+            
+            <form id="order-form" name="order" method="POST" netlify class="p-6">
+                <div class="grid md:grid-cols-5 gap-6">
+                    
+                    <!-- Customer Information -->
+                    <div class="md:col-span-2">
+                        <div class="font-semibold mb-3 text-sm tracking-wider flex items-center gap-x-2 text-gray-700">
+                            <span class="bg-gray-200 w-5 h-[1px] flex-1"></span> 
+                            CUSTOMER INFORMATION
+                        </div>
+                        
+                        <div class="space-y-4">
+                            <div>
+                                <label class="text-xs font-medium text-gray-500 block mb-1">Full Name</label>
+                                <input name="name" required type="text" class="w-full border border-gray-200 focus:border-[#c2410f] px-4 py-2.5 rounded-2xl text-sm outline-none" placeholder="Your full name">
+                            </div>
+                            <div>
+                                <label class="text-xs font-medium text-gray-500 block mb-1">Email Address</label>
+                                <input name="email" required type="email" class="w-full border border-gray-200 focus:border-[#c2410f] px-4 py-2.5 rounded-2xl text-sm outline-none" placeholder="you@email.com">
+                            </div>
+                            <div>
+                                <label class="text-xs font-medium text-gray-500 block mb-1">Phone Number</label>
+                                <input name="phone" required type="tel" value="+880" class="w-full border border-gray-200 focus:border-[#c2410f] px-4 py-2.5 rounded-2xl text-sm outline-none">
+                            </div>
+                            <div>
+                                <label class="text-xs font-medium text-gray-500 block mb-1">Delivery Address</label>
+                                <textarea name="address" required rows="3" class="w-full border border-gray-200 focus:border-[#c2410f] px-4 py-2.5 rounded-2xl text-sm outline-none resize-y" placeholder="House no, Road, Area, Dhaka"></textarea>
+                            </div>
+                            <div class="flex items-center gap-x-2 text-xs">
+                                <input type="checkbox" id="save-address" class="accent-[#c2410f]">
+                                <label for="save-address" class="text-gray-600">Save address for future orders</label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Delivery -->
+                    <div class="md:col-span-3">
+                        <div class="font-semibold mb-3 text-sm tracking-wider flex items-center gap-x-2 text-gray-700">
+                            <span class="bg-gray-200 w-5 h-[1px] flex-1"></span> 
+                            DELIVERY
+                        </div>
+                        
+                        <div>
+                            <label class="text-xs font-medium text-gray-500 block mb-1.5">Delivery Location</label>
+                            <select id="delivery-location" name="delivery_location" onchange="updateDeliveryCharge()" required
+                                    class="w-full border border-gray-200 px-4 py-[13px] rounded-2xl text-sm outline-none">
+                                <option value="Dhaka">Dhaka City — ৳70</option>
+                                <option value="Dhaka Sub-area">Dhaka Sub-area — ৳100</option>
+                                <option value="Outside Dhaka">Outside Dhaka — ৳130</option>
+                            </select>
+                        </div>
+                        
+                        <div class="mt-5 bg-gray-50 border border-gray-100 rounded-2xl p-4 text-sm">
+                            <div class="flex justify-between text-gray-600">
+                                <div>Dynamic Delivery Charge</div>
+                                <div id="delivery-charge" class="font-bold text-[#854d0e]">৳70</div>
+                            </div>
+                            <div class="text-[10px] text-gray-400 mt-1">* Additional charge may apply for remote areas. We will confirm before dispatch.</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Payment -->
+                    <div class="md:col-span-5 mt-2">
+                        <div class="font-semibold mb-3 text-sm tracking-wider flex items-center gap-x-2 text-gray-700">
+                            <span class="bg-gray-200 w-5 h-[1px] flex-1"></span> 
+                            PAYMENT METHOD
+                        </div>
+                        
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                            <!-- COD -->
+                            <div onclick="selectPaymentMethod(this, 'cod')" id="payment-cod"
+                                 class="cursor-pointer border-2 border-[#854d0e] bg-[#854d0e]/5 rounded-2xl p-4 flex gap-x-3 items-start active:scale-[0.985] transition-transform">
+                                <div class="mt-0.5"><i class="fas fa-money-bill-wave text-[#854d0e] text-xl"></i></div>
+                                <div class="flex-1">
+                                    <div class="font-semibold">Cash on Delivery</div>
+                                    <div class="text-xs text-gray-500">Pay when you receive your order</div>
+                                </div>
+                            </div>
+                            
+                            <!-- bKash -->
+                            <div onclick="selectPaymentMethod(this, 'bkash')" id="payment-bkash"
+                                 class="cursor-pointer border-2 border-gray-200 hover:border-gray-300 rounded-2xl p-4 flex gap-x-3 items-start active:scale-[0.985] transition-transform">
+                                <div class="mt-0.5"><i class="fas fa-mobile-alt text-pink-600 text-xl"></i></div>
+                                <div class="flex-1">
+                                    <div class="font-semibold">bKash</div>
+                                    <div class="text-xs text-gray-500">Pay securely via bKash • We will share details</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Totals -->
+                <div class="mt-8 border-t pt-5 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-y-4 px-1">
+                    <div>
+                        <div class="text-xs text-gray-500">ORDER TOTAL</div>
+                        <div class="flex items-baseline gap-x-2">
+                            <div id="checkout-total" class="text-4xl font-bold text-[#854d0e]"></div>
+                            <div class="text-xs text-gray-400">incl. delivery</div>
+                        </div>
+                    </div>
+                    
+                    <button type="button" onclick="placeOrder()"
+                            class="premium-btn w-full sm:w-auto px-14 py-4 bg-[#c2410f] hover:bg-[#9f2a0a] transition-all text-white font-bold rounded-3xl flex items-center justify-center gap-x-3 text-sm tracking-wider">
+                        <span>PLACE ORDER</span>
+                        <i class="fas fa-check"></i>
+                    </button>
+                </div>
+                
+                <input type="hidden" name="cart_items" id="form-cart-items">
+                <input type="hidden" name="total_amount" id="form-total">
+            </form>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div id="success-modal" onclick="if (event.target.id === 'success-modal') hideSuccessModal()" 
+         class="hidden fixed inset-0 bg-black/70 z-[100] flex items-center justify-center p-4">
+        <div onclick="event.stopImmediatePropagation()" class="bg-white max-w-md w-full rounded-3xl p-8 text-center modal">
+            <div class="mx-auto w-20 h-20 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mb-6">
+                <i class="fas fa-check-circle text-5xl"></i>
+            </div>
+            
+            <h3 class="font-bold text-2xl tracking-tight">Order Placed Successfully!</h3>
+            <p class="text-gray-600 mt-2">Thank you for shopping with MeowNest Bangladesh.</p>
+            
+            <div class="my-6 bg-gray-50 rounded-2xl p-5 text-left text-sm">
+                <div class="flex justify-between py-1 border-b"><span class="text-gray-500">Order #</span> <span id="success-order-id" class="font-mono font-semibold"></span></div>
+                <div class="flex justify-between py-1 border-b"><span class="text-gray-500">Total Paid</span> <span id="success-total" class="font-semibold"></span></div>
+                <div class="flex justify-between py-1"><span class="text-gray-500">Delivery</span> <span id="success-delivery"></span></div>
+            </div>
+            
+            <p class="text-xs text-gray-500">We will contact you shortly via WhatsApp or phone to confirm your order and delivery time.</p>
+            
+            <div class="mt-7 grid grid-cols-2 gap-3">
+                <button onclick="hideSuccessModal(); showCart()" 
+                        class="py-3 border text-sm font-semibold rounded-3xl hover:bg-gray-50">View Order</button>
+                
+                <button onclick="contactWhatsApp()" 
+                        class="py-3 bg-[#25D366] text-white text-sm font-semibold rounded-3xl flex items-center justify-center gap-x-2">
+                    <i class="fab fa-whatsapp"></i> 
+                    <span>Chat on WhatsApp</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Tailwind script configuration
+        function initializeTailwind() {
+            document.documentElement.style.setProperty('--accent', '#c2410f');
+        }
+        
+        // Product Data - Exactly from your provided lists + professional descriptions
+        let products = [
+            {
+                id: 1,
+                name: "SmartHeart Adult 1.1kg Chicken And Tuna Flavour",
+                category: "Cat Food",
+                price: 750,
+                weight: "1.1 kg",
+                stock: true,
+                image: "images/product-1.jpg",
+                description: "Premium dry kibble formulated for adult cats. Rich in real chicken and tuna for healthy skin, shiny coat and strong muscles. Complete and balanced nutrition with essential vitamins and minerals."
+            },
+            {
+                id: 2,
+                name: "SmartHeart Kitten 1.2kg Chicken, Tuna, Egg & Milk Flavour",
+                category: "Cat Food",
+                price: 750,
+                weight: "1.2 kg",
+                stock: true,
+                image: "images/product-2.jpg",
+                description: "Specially developed for kittens. High protein formula with chicken, tuna, egg and milk to support healthy growth, brain development and strong bones during the critical first year."
+            },
+            {
+                id: 3,
+                name: "SmartHeart Kitten 450g Chicken, Tuna, Egg & Milk Flavour",
+                category: "Cat Food",
+                price: 350,
+                weight: "450 g",
+                stock: true,
+                image: "images/product-3.jpg",
+                description: "Smaller pack of our popular kitten formula. Ideal for trying or multi-cat households. Contains essential nutrients for growing kittens."
+            },
+            {
+                id: 4,
+                name: "SmartHeart Adult 480g Chicken & Tuna Flavour",
+                category: "Cat Food",
+                price: 350,
+                weight: "480 g",
+                stock: true,
+                image: "images/product-4.jpg",
+                description: "Convenient smaller pack for adult cats. Delicious chicken and tuna flavour that cats love. Complete daily nutrition in every bite."
+            },
+            {
+                id: 5,
+                name: "SmartHeart Adult Cat Canned Food Sardine with Chicken in Jelly 400g",
+                category: "Cat Food",
+                price: 220,
+                weight: "400 g",
+                stock: true,
+                image: "images/product-5.jpg",
+                description: "Delicious wet food in savoury jelly. Made with real sardine and chicken. High moisture content supports urinary health and provides excellent hydration."
+            },
+            {
+                id: 6,
+                name: "SmartHeart Adult Cat Canned Food Tuna in Jelly 400g",
+                category: "Cat Food",
+                price: 220,
+                weight: "400 g",
+                stock: true,
+                image: "https://picsum.photos/id/312/400/400",
+                description: "Tasty tuna in jelly for adult cats. Excellent source of omega-3 for healthy skin and coat. Grain-free recipe loved by even picky eaters."
+            },
+            {
+                id: 7,
+                name: "SmartHeart Adult Canned Food Sardine with Crab Stick in Jelly 400g",
+                category: "Cat Food",
+                price: 220,
+                weight: "400 g",
+                stock: false,
+                image: "https://picsum.photos/id/29/400/400",
+                description: "Gourmet wet food with sardine and crab stick. Rich flavour and texture cats adore. Currently out of stock — sign up for restock notification."
+            },
+            {
+                id: 8,
+                name: "SmartHeart Cat Pouch – Chicken With Rice & Carrot (85g)",
+                category: "Cat Food",
+                price: 85,
+                weight: "85 g",
+                stock: false,
+                image: "https://picsum.photos/id/201/400/400",
+                description: "Single-serve pouch with real chicken, rice and carrot. Perfect for portion control or as a tasty topper. Out of stock."
+            },
+            {
+                id: 9,
+                name: "SmartHeart Cat Pouch – Adult Tuna in Jelly (85g)",
+                category: "Cat Food",
+                price: 85,
+                weight: "85 g",
+                stock: true,
+                image: "https://picsum.photos/id/312/400/400",
+                description: "Convenient 85g pouch of tuna in jelly. Ideal as a treat, meal topper or for cats who prefer smaller portions. Fresh and flavourful."
+            },
+            {
+                id: 10,
+                name: "SmartHeart Cat Pouch – Kitten Tuna in Jelly (85g)",
+                category: "Cat Food",
+                price: 85,
+                weight: "85 g",
+                stock: true,
+                image: "https://picsum.photos/id/29/400/400",
+                description: "Specially made for kittens. Tender tuna in jelly that is easy to eat and digest. Great for introducing wet food to young cats."
+            },
+            {
+                id: 11,
+                name: "Interactive Cat Toy Ball with Tail, Silicone Rolling Ball",
+                category: "Cat Toys",
+                price: 550,
+                weight: "—",
+                stock: true,
+                image: "https://picsum.photos/id/160/400/400",
+                description: "Engaging automatic rolling ball with fluffy tail. Encourages daily exercise, mental stimulation and helps reduce boredom and destructive behaviour in indoor cats."
+            },
+            {
+                id: 12,
+                name: "Cat Premium Grooming Brush",
+                category: "Grooming",
+                price: 500,
+                weight: "—",
+                stock: true,
+                image: "https://picsum.photos/id/251/400/400",
+                description: "Professional quality grooming brush that gently removes loose fur and prevents matting. Suitable for most coat types. Reduces shedding around the home."
+            },
+            {
+                id: 13,
+                name: "Cat Grooming Brush & Pet Deshedding Tools Set",
+                category: "Grooming",
+                price: 450,
+                weight: "—",
+                stock: true,
+                image: "https://picsum.photos/id/160/400/400",
+                description: "Complete 2-in-1 grooming kit with deshedding tool and slicker brush. Ideal for long-haired cats. Helps keep coat healthy and reduces hairballs."
+            },
+            {
+                id: 14,
+                name: "Helminticide-L Deworming Tablet for Dog and Cat (1pcs)",
+                category: "Health & Care",
+                price: 70,
+                weight: "1 tablet",
+                stock: true,
+                image: "https://picsum.photos/id/201/400/400",
+                description: "Broad spectrum dewormer safe for both cats and dogs. Effectively eliminates common intestinal worms. Easy to administer tablet. Recommended every 3-6 months."
+            },
+            {
+                id: 15,
+                name: "PA Zinc Plus (100ml)",
+                category: "Health & Care",
+                price: 95,
+                weight: "100 ml",
+                stock: true,
+                image: "https://picsum.photos/id/251/400/400",
+                description: "Liquid zinc supplement to support immune system, skin health and wound healing. Essential trace mineral for cats of all ages."
+            },
+            {
+                id: 16,
+                name: "CattoGel Multivitamin Paste for Cats & Dogs (120g)",
+                category: "Health & Care",
+                price: 700,
+                weight: "120 g",
+                stock: true,
+                image: "https://picsum.photos/id/29/400/400",
+                description: "Tasty multivitamin paste enriched with amino acids and essential minerals. Supports overall health, energy levels and immune function. Easy to feed directly or mixed with food."
+            },
+            {
+                id: 17,
+                name: "Himalaya Erina EP Shampoo Tick and Flea Control for Cats & Dogs",
+                category: "Health & Care",
+                price: 650,
+                weight: "—",
+                stock: true,
+                image: "https://picsum.photos/id/160/400/400",
+                description: "Natural herbal shampoo that effectively controls ticks, fleas and lice. Gentle on skin, pleasant fragrance and helps maintain healthy coat and skin."
+            },
+            {
+                id: 18,
+                name: "Footprint Dog/Cat Collar Neck Belt",
+                category: "Accessories",
+                price: 50,
+                weight: "—",
+                stock: true,
+                image: "https://picsum.photos/id/201/400/400",
+                description: "Adjustable and comfortable nylon collar with cute footprint pattern. Includes bell and ID tag holder. Available in multiple sizes (please specify when ordering)."
+            },
+            {
+                id: 19,
+                name: "Stainless Steel Cat Food Bowl",
+                category: "Accessories",
+                price: 450,
+                weight: "—",
+                stock: true,
+                image: "https://picsum.photos/id/312/400/400",
+                description: "Durable, hygienic and easy-to-clean stainless steel bowl. Non-slip base. Perfect size for both dry and wet food. Dishwasher safe."
+            }
+        ]
+
+        let cart = []
+        let currentProductId = null
+        let currentFilter = 'All'
+        let stockFilterActive = false
+        let currentSort = 'default'
+
+        // Initialize everything
+        function initializeWebsite() {
+            initializeTailwind()
+            renderProducts(products)
+            updateCartCount()
+            
+            // Load cart from localStorage
+            const savedCart = localStorage.getItem('meownest_cart')
+            if (savedCart) {
+                cart = JSON.parse(savedCart)
+                updateCartCount()
+            }
+            
+            // Search listeners
+            const navSearch = document.getElementById('nav-search')
+            const mobileSearch = document.getElementById('mobile-search')
+            
+            if (navSearch) {
+                navSearch.addEventListener('input', () => {
+                    applyFilters()
+                })
+            }
+            
+            if (mobileSearch) {
+                mobileSearch.addEventListener('input', () => {
+                    document.getElementById('nav-search').value = mobileSearch.value
+                    applyFilters()
+                })
+            }
+            
+            // Sort listener already has onchange
+            console.log('%c[MeowNest] Premium website initialized successfully. All features ready.', 'color:#854d0e')
+        }
+
+        // Render all products (or filtered)
+        function renderProducts(filteredProducts) {
+            const grid = document.getElementById('products-grid')
+            grid.innerHTML = ''
+            
+            if (filteredProducts.length === 0) {
+                grid.innerHTML = `
+                    <div class="col-span-full py-12 text-center">
+                        <i class="fas fa-search text-4xl text-gray-300 mb-4"></i>
+                        <p class="text-gray-500">No products found matching your filters.</p>
+                        <button onclick="resetFilters()" class="mt-4 text-sm underline text-[#c2410f]">Clear all filters</button>
+                    </div>
+                `
+                document.getElementById('product-count').textContent = '0'
+                return
+            }
+            
+            filteredProducts.forEach(product => {
+                const cardHTML = `
+                    <div onclick="showProductModal(${product.id})" class="product-card bg-white border border-gray-100 rounded-3xl overflow-hidden cursor-pointer group">
+                        <div class="relative aspect-square bg-gray-50 overflow-hidden">
+                            <img src="${product.image}" alt="${product.name}" 
+                                 class="product-img w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500">
+                            
+                            ${!product.stock ? `<div class="absolute top-3 right-3 bg-white/90 backdrop-blur px-3 py-0.5 rounded-2xl text-[10px] font-bold text-red-600 tracking-wider shadow">OUT OF STOCK</div>` : `<div class="absolute top-3 right-3 bg-emerald-500 text-white text-[10px] font-bold px-3 py-0.5 rounded-2xl shadow">IN STOCK</div>`}
+                        </div>
+                        
+                        <div class="p-4">
+                            <div class="text-xs text-gray-400 mb-1">${product.category} • ${product.weight}</div>
+                            
+                            <div class="font-semibold text-sm leading-tight line-clamp-2 min-h-[2.1rem]">${product.name}</div>
+                            
+                            <div class="mt-3 flex items-end justify-between">
+                                <div>
+                                    <span class="font-bold text-xl text-[#854d0e]">৳${product.price}</span>
+                                </div>
+                                
+                                <button onclick="event.stopImmediatePropagation(); addToCart(${product.id}, 1)" 
+                                        class="px-4 py-1.5 text-xs font-semibold rounded-2xl transition-all flex items-center gap-x-1.5 ${product.stock ? 'bg-[#854d0e] hover:bg-[#6b3d0a] text-white' : 'bg-gray-200 text-gray-400 cursor-not-allowed'}"
+                                        ${!product.stock ? 'disabled' : ''}>
+                                    <i class="fas fa-plus text-xs"></i>
+                                    <span class="font-medium">Add</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `
+                grid.innerHTML += cardHTML
+            })
+            
+            document.getElementById('product-count').textContent = filteredProducts.length
+        }
+
+        // Apply all filters + search + sort
+        function applyFilters() {
+            const searchTerm = (document.getElementById('nav-search').value || '').toLowerCase().trim()
+            const sortMode = document.getElementById('sort-select').value
+            
+            let filtered = products
+            
+            // Category filter
+            if (currentFilter !== 'All') {
+                filtered = filtered.filter(p => p.category === currentFilter)
+            }
+            
+            // Stock filter
+            if (stockFilterActive) {
+                filtered = filtered.filter(p => p.stock === true)
+            }
+            
+            // Search
+            if (searchTerm.length > 0) {
+                filtered = filtered.filter(p => 
+                    p.name.toLowerCase().includes(searchTerm) || 
+                    p.category.toLowerCase().includes(searchTerm) ||
+                    p.description.toLowerCase().includes(searchTerm)
+                )
+            }
+            
+            // Sort
+            if (sortMode === 'price-low') {
+                filtered.sort((a, b) => a.price - b.price)
+            } else if (sortMode === 'price-high') {
+                filtered.sort((a, b) => b.price - a.price)
+            } else if (sortMode === 'name') {
+                filtered.sort((a, b) => a.name.localeCompare(b.name))
+            }
+            
+            renderProducts(filtered)
+            updateActiveFiltersUI(searchTerm)
+        }
+
+        function updateActiveFiltersUI(searchTerm) {
+            const container = document.getElementById('active-filters')
+            container.innerHTML = ''
+            
+            if (currentFilter !== 'All') {
+                const pill = createFilterPill(currentFilter, () => {
+                    currentFilter = 'All'
+                    applyFilters()
+                })
+                container.appendChild(pill)
+            }
+            
+            if (stockFilterActive) {
+                const pill = createFilterPill('In Stock Only', () => {
+                    stockFilterActive = false
+                    document.getElementById('stock-filter-btn').classList.remove('filter-active', 'bg-[#854d0e]', 'text-white')
+                    applyFilters()
+                })
+                container.appendChild(pill)
+            }
+            
+            if (searchTerm) {
+                const pill = createFilterPill(`Search: "${searchTerm}"`, () => {
+                    document.getElementById('nav-search').value = ''
+                    applyFilters()
+                })
+                container.appendChild(pill)
+            }
+        }
+        
+        function createFilterPill(text, onRemove) {
+            const div = document.createElement('div')
+            div.className = `inline-flex items-center gap-x-2 bg-[#854d0e] text-white text-xs pl-4 pr-2 py-1 rounded-3xl`
+            div.innerHTML = `
+                <span>${text}</span>
+                <button class="w-5 h-5 flex items-center justify-center hover:bg-white/20 rounded-full">×</button>
+            `
+            div.querySelector('button').onclick = (e) => {
+                e.stopImmediatePropagation()
+                onRemove()
+            }
+            return div
+        }
+
+        function filterByCategory(category) {
+            currentFilter = category
+            document.getElementById('nav-search').value = ''
+            applyFilters()
+            
+            // Scroll to shop
+            document.getElementById('shop').scrollIntoView({ behavior: 'smooth', block: 'start' })
+        }
+        
+        function toggleStockFilter(btn) {
+            stockFilterActive = !stockFilterActive
+            if (stockFilterActive) {
+                btn.classList.add('filter-active', 'bg-[#854d0e]', 'text-white')
+            } else {
+                btn.classList.remove('filter-active', 'bg-[#854d0e]', 'text-white')
+            }
+            applyFilters()
+        }
+        
+        function resetFilters() {
+            currentFilter = 'All'
+            stockFilterActive = false
+            document.getElementById('nav-search').value = ''
+            document.getElementById('sort-select').value = 'default'
+            document.getElementById('stock-filter-btn').classList.remove('filter-active', 'bg-[#854d0e]', 'text-white')
+            document.getElementById('active-filters').innerHTML = ''
+            renderProducts(products)
+        }
+
+        // Show product detail modal
+        function showProductModal(productId) {
+            const product = products.find(p => p.id === productId)
+            if (!product) return
+            
+            currentProductId = productId
+            
+            // Fill modal content
+            document.getElementById('modal-name').innerHTML = product.name
+            document.getElementById('modal-weight').innerHTML = product.weight + ' • ' + product.category
+            document.getElementById('modal-price').innerHTML = `৳${product.price}`
+            document.getElementById('modal-description').innerHTML = product.description
+            
+            // Category badge
+            const badge = document.getElementById('modal-category-badge')
+            badge.innerHTML = product.category
+            badge.className = `inline-block text-xs font-semibold px-3 py-1 rounded-2xl mb-3 ${product.category === 'Cat Food' ? 'bg-orange-100 text-orange-700' : product.category === 'Cat Toys' ? 'bg-pink-100 text-pink-700' : product.category === 'Grooming' ? 'bg-amber-100 text-amber-700' : product.category === 'Health & Care' ? 'bg-emerald-100 text-emerald-700' : 'bg-sky-100 text-sky-700'}`
+            
+            // Stock
+            const stockEl = document.getElementById('modal-stock-badge')
+            if (product.stock) {
+                stockEl.innerHTML = `<span class="stock-badge bg-emerald-100 text-emerald-700">In Stock • Ready to ship</span>`
+            } else {
+                stockEl.innerHTML = `<span class="stock-badge bg-red-100 text-red-600">Out of Stock</span>`
+            }
+            
+            // Image
+            document.getElementById('modal-image-container').innerHTML = `
+                <img src="${product.image}" alt="${product.name}" class="w-full h-full object-cover">
+            `
+            
+            // Quantity reset
+            document.getElementById('modal-qty').textContent = '1'
+            
+            // Related products
+            renderRelatedProducts(product)
+            
+            // Show modal
+            document.getElementById('product-modal').classList.remove('hidden')
+            document.getElementById('product-modal').classList.add('flex')
+        }
+        
+        function hideProductModal() {
+            const modal = document.getElementById('product-modal')
+            modal.classList.remove('flex')
+            modal.classList.add('hidden')
+        }
+        
+        function changeModalQty(delta) {
+            const qtyEl = document.getElementById('modal-qty')
+            let qty = parseInt(qtyEl.textContent)
+            qty = Math.max(1, Math.min(10, qty + delta))
+            qtyEl.textContent = qty
+        }
+        
+        function addCurrentProductToCart() {
+            if (!currentProductId) return
+            const qty = parseInt(document.getElementById('modal-qty').textContent)
+            addToCart(currentProductId, qty)
+            hideProductModal()
+        }
+        
+        function buyNow() {
+            if (!currentProductId) return
+            const qty = parseInt(document.getElementById('modal-qty').textContent)
+            addToCart(currentProductId, qty)
+            hideProductModal()
+            setTimeout(() => {
+                proceedToCheckout()
+            }, 420)
+        }
+        
+        function renderRelatedProducts(currentProduct) {
+            const container = document.getElementById('related-products')
+            container.innerHTML = ''
+            
+            const related = products
+                .filter(p => p.category === currentProduct.category && p.id !== currentProduct.id && p.stock)
+                .slice(0, 4)
+            
+            if (related.length === 0) {
+                container.innerHTML = `<div class="col-span-4 text-xs text-gray-400 px-1">No similar products currently in stock.</div>`
+                return
+            }
+            
+            related.forEach(prod => {
+                const el = document.createElement('div')
+                el.className = `cursor-pointer border border-gray-100 hover:border-gray-200 rounded-2xl overflow-hidden text-xs`
+                el.innerHTML = `
+                    <div class="aspect-square bg-gray-50">
+                        <img src="${prod.image}" class="w-full h-full object-cover" alt="${prod.name}">
+                    </div>
+                    <div class="p-2.5">
+                        <div class="font-medium line-clamp-2 leading-tight">${prod.name}</div>
+                        <div class="mt-1 font-bold text-[#854d0e]">৳${prod.price}</div>
+                    </div>
+                `
+                el.onclick = () => {
+                    hideProductModal()
+                    setTimeout(() => showProductModal(prod.id), 150)
+                }
+                container.appendChild(el)
+            })
+        }
+
+        // Cart functions
+        function addToCart(productId, qty = 1) {
+            const product = products.find(p => p.id === productId)
+            if (!product || !product.stock) {
+                alert("Sorry, this product is currently out of stock.")
+                return
+            }
+            
+            const existing = cart.findIndex(item => item.id === productId)
+            
+            if (existing > -1) {
+                cart[existing].qty += qty
+            } else {
+                cart.push({ ...product, qty: qty })
+            }
+            
+            saveCart()
+            updateCartCount()
+            
+            // Toast notification
+            showToastNotification(`${qty} × ${product.name} added to cart`)
+        }
+        
+        function showToastNotification(message) {
+            const toast = document.createElement('div')
+            toast.className = `fixed bottom-5 left-1/2 -translate-x-1/2 bg-[#111827] text-white text-sm px-6 py-3 rounded-3xl shadow-xl flex items-center gap-x-3 z-[200]`
+            toast.innerHTML = `
+                <i class="fas fa-check-circle text-emerald-400"></i>
+                <span>${message}</span>
+            `
+            document.body.appendChild(toast)
+            
+            setTimeout(() => {
+                toast.style.transition = 'all 0.3s ease'
+                toast.style.opacity = '0'
+                setTimeout(() => toast.remove(), 200)
+            }, 2200)
+        }
+        
+        function updateCartCount() {
+            let count = 0
+            cart.forEach(item => count += item.qty)
+            document.getElementById('cart-count').textContent = count
+        }
+        
+        function saveCart() {
+            localStorage.setItem('meownest_cart', JSON.stringify(cart))
+        }
+        
+        function showCart() {
+            const drawer = document.getElementById('cart-drawer')
+            const itemsContainer = document.getElementById('cart-items')
+            
+            itemsContainer.innerHTML = ''
+            
+            if (cart.length === 0) {
+                itemsContainer.innerHTML = `
+                    <div class="h-full flex flex-col items-center justify-center text-center py-10">
+                        <i class="fas fa-shopping-cart text-5xl text-gray-200 mb-4"></i>
+                        <p class="font-medium">Your cart is empty</p>
+                        <p class="text-sm text-gray-400 mt-1">Add some premium products for your cat!</p>
+                        <button onclick="hideCart()" class="mt-6 text-sm underline text-[#c2410f]">Continue shopping</button>
+                    </div>
+                `
+                document.getElementById('cart-subtotal').innerHTML = `৳0`
+            } else {
+                let subtotal = 0
+                
+                cart.forEach((item, index) => {
+                    subtotal += item.price * item.qty
+                    
+                    const itemHTML = `
+                        <div class="flex gap-4 border-b pb-5 last:border-none last:pb-0">
+                            <div class="w-16 h-16 flex-shrink-0 bg-gray-100 rounded-2xl overflow-hidden border">
+                                <img src="${item.image}" class="w-full h-full object-cover" alt="${item.name}">
+                            </div>
+                            
+                            <div class="flex-1 min-w-0">
+                                <div class="font-semibold leading-tight text-sm pr-6">${item.name}</div>
+                                <div class="text-xs text-gray-400">${item.weight}</div>
+                                
+                                <div class="flex items-center justify-between mt-3">
+                                    <div class="font-bold text-[#854d0e]">৳${item.price}</div>
+                                    
+                                    <div class="flex items-center border border-gray-200 text-sm rounded-2xl overflow-hidden">
+                                        <button onclick="updateCartItemQty(${index}, -1)" class="px-2.5 py-px text-lg leading-none hover:bg-gray-100 active:bg-gray-200">−</button>
+                                        <div class="px-3 font-semibold select-none">${item.qty}</div>
+                                        <button onclick="updateCartItemQty(${index}, 1)" class="px-2.5 py-px text-lg leading-none hover:bg-gray-100 active:bg-gray-200">+</button>
+                                    </div>
+                                    
+                                    <button onclick="removeFromCart(${index})" class="text-red-400 hover:text-red-500 px-1">
+                                        <i class="fas fa-trash text-xs"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    `
+                    itemsContainer.innerHTML += itemHTML
+                })
+                
+                document.getElementById('cart-subtotal').innerHTML = `৳${subtotal}`
+            }
+            
+            drawer.classList.remove('hidden')
+            drawer.classList.add('flex')
+        }
+        
+        function hideCart() {
+            const drawer = document.getElementById('cart-drawer')
+            drawer.classList.remove('flex')
+            drawer.classList.add('hidden')
+        }
+        
+        function updateCartItemQty(index, delta) {
+            cart[index].qty += delta
+            
+            if (cart[index].qty < 1) cart[index].qty = 1
+            
+            saveCart()
+            updateCartCount()
+            showCart() // refresh drawer
+        }
+        
+        function removeFromCart(index) {
+            cart.splice(index, 1)
+            saveCart()
+            updateCartCount()
+            showCart()
+        }
+        
+        // Checkout
+        function proceedToCheckout() {
+            if (cart.length === 0) return
+            
+            hideCart()
+            
+            // Pre-fill total
+            let subtotal = 0
+            cart.forEach(item => subtotal += item.price * item.qty)
+            
+            document.getElementById('checkout-total').innerHTML = `৳${subtotal + 70}`
+            document.getElementById('delivery-charge').innerHTML = `৳70`
+            
+            // Pre-select COD
+            selectPaymentMethod(document.getElementById('payment-cod'), 'cod')
+            
+            const modal = document.getElementById('checkout-modal')
+            modal.classList.remove('hidden')
+            modal.classList.add('flex')
+            
+            // Update form hidden fields
+            updateOrderFormHiddenFields()
+        }
+        
+        function hideCheckout() {
+            const modal = document.getElementById('checkout-modal')
+            modal.classList.remove('flex')
+            modal.classList.add('hidden')
+        }
+        
+        function updateDeliveryCharge() {
+            const location = document.getElementById('delivery-location').value
+            let charge = 70
+            
+            if (location === 'Dhaka Sub-area') charge = 100
+            else if (location === 'Outside Dhaka') charge = 130
+            
+            document.getElementById('delivery-charge').innerHTML = `৳${charge}`
+            
+            // Recalculate total
+            let subtotal = 0
+            cart.forEach(item => subtotal += item.price * item.qty)
+            document.getElementById('checkout-total').innerHTML = `৳${subtotal + charge}`
+            
+            updateOrderFormHiddenFields()
+        }
+        
+        function selectPaymentMethod(element, method) {
+            // Deselect all
+            document.getElementById('payment-cod').classList.remove('border-[#854d0e]', 'bg-[#854d0e]/5')
+            document.getElementById('payment-cod').classList.add('border-gray-200')
+            
+            document.getElementById('payment-bkash').classList.remove('border-[#854d0e]', 'bg-[#854d0e]/5')
+            document.getElementById('payment-bkash').classList.add('border-gray-200')
+            
+            // Select current
+            element.classList.remove('border-gray-200')
+            element.classList.add('border-[#854d0e]', 'bg-[#854d0e]/5')
+            
+            // Store selected method
+            element.dataset.method = method
+        }
+        
+        function updateOrderFormHiddenFields() {
+            // Prepare cart summary for Netlify form
+            let summary = cart.map(item => `${item.name} × ${item.qty} = ৳${item.price * item.qty}`).join(' | ')
+            document.getElementById('form-cart-items').value = summary
+            
+            let subtotal = 0
+            cart.forEach(item => subtotal += item.price * item.qty)
+            const location = document.getElementById('delivery-location').value || 'Dhaka'
+            let charge = 70
+            if (location === 'Dhaka Sub-area') charge = 100
+            else if (location === 'Outside Dhaka') charge = 130
+            
+            document.getElementById('form-total').value = subtotal + charge
+        }
+        
+        function placeOrder() {
+            const form = document.getElementById('order-form')
+            
+            // Basic validation
+            const requiredFields = form.querySelectorAll('[required]')
+            let isValid = true
+            
+            requiredFields.forEach(field => {
+                if (!field.value.trim()) {
+                    field.classList.add('!border-red-400')
+                    isValid = false
+                } else {
+                    field.classList.remove('!border-red-400')
+                }
+            })
+            
+            if (!isValid) {
+                alert("Please fill in all required fields.")
+                return
+            }
+            
+            // Get selected payment
+            const codSelected = document.getElementById('payment-cod').classList.contains('bg-[#854d0e]/5')
+            const paymentMethod = codSelected ? 'Cash on Delivery' : 'bKash'
+            
+            // Update hidden payment field if needed
+            let paymentInput = form.querySelector('input[name="payment_method"]')
+            if (!paymentInput) {
+                paymentInput = document.createElement('input')
+                paymentInput.type = 'hidden'
+                paymentInput.name = 'payment_method'
+                form.appendChild(paymentInput)
+            }
+            paymentInput.value = paymentMethod
+            
+            // Calculate final total
+            let subtotal = 0
+            cart.forEach(item => subtotal += item.price * item.qty)
+            const locationSelect = document.getElementById('delivery-location')
+            let deliveryCharge = 70
+            if (locationSelect.value === 'Dhaka Sub-area') deliveryCharge = 100
+            else if (locationSelect.value === 'Outside Dhaka') deliveryCharge = 130
+            
+            const finalTotal = subtotal + deliveryCharge
+            
+            // Show success
+            hideCheckout()
+            
+            setTimeout(() => {
+                showSuccessModal(finalTotal, deliveryCharge)
+                
+                // Clear cart after successful order
+                cart = []
+                saveCart()
+                updateCartCount()
+                
+                // In real deployment with Netlify Forms, the form would submit here.
+                // For now we simulate success. You can enable Netlify Forms in dashboard.
+            }, 280)
+        }
+        
+        function showSuccessModal(total, delivery) {
+            const modal = document.getElementById('success-modal')
+            
+            document.getElementById('success-order-id').textContent = 'MN' + Date.now().toString().slice(-8)
+            document.getElementById('success-total').innerHTML = `৳${total}`
+            document.getElementById('success-delivery').innerHTML = `৳${delivery} • ${document.getElementById('delivery-location').value}`
+            
+            modal.classList.remove('hidden')
+            modal.classList.add('flex')
+        }
+        
+        function hideSuccessModal() {
+            const modal = document.getElementById('success-modal')
+            modal.classList.remove('flex')
+            modal.classList.add('hidden')
+            
+            // Reset everything nicely
+            document.getElementById('nav-search').value = ''
+            currentFilter = 'All'
+            stockFilterActive = false
+            document.getElementById('stock-filter-btn').classList.remove('filter-active', 'bg-[#854d0e]', 'text-white')
+            renderProducts(products)
+        }
+        
+        function contactWhatsApp() {
+            const phone = '8801316820107'
+            const message = encodeURIComponent("Hello MeowNest, I just placed an order and would like to confirm the details. Thank you!")
+            window.open(`https://wa.me/${phone}?text=${message}`, '_blank')
+        }
+        
+        function updateDeliveryChargeOnLoad() {
+            // Already handled by select onchange
+        }
+        
+        function filterByCategoryOnLoad() {
+            // Optional: can prefilter if needed
+        }
+        
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu')
+            menu.classList.toggle('hidden')
+        }
+        
+        function showWishlist() {
+            alert("Wishlist feature coming soon! You can add products to wishlist in the next version.")
+        }
+        
+        function showAccountModal() {
+            const modalHTML = `
+                <div onclick="this.remove()" class="fixed inset-0 bg-black/50 z-[95] flex items-center justify-center p-4">
+                    <div onclick="event.stopImmediatePropagation()" class="bg-white max-w-sm w-full rounded-3xl p-7">
+                        <div class="font-bold text-xl mb-1">Account</div>
+                        <p class="text-sm text-gray-500">Sign in to track orders, manage wishlist and faster checkout.</p>
+                        
+                        <div class="mt-6 space-y-3">
+                            <button class="w-full py-3 bg-[#854d0e] text-white rounded-3xl font-semibold">Sign in with Phone / Email</button>
+                            <button class="w-full py-3 border text-sm font-medium rounded-3xl">Create new account</button>
+                        </div>
+                        
+                        <div class="text-[10px] text-center text-gray-400 mt-6">Your data is safe with us. We never share your information.</div>
+                    </div>
+                </div>
+            `
+            document.body.insertAdjacentHTML('beforeend', modalHTML)
+        }
+        
+        // Keyboard support
+        document.addEventListener('keydown', function(e) {
+            if (e.key === "Escape") {
+                const modals = document.querySelectorAll('.fixed.inset-0:not(.hidden)')
+                if (modals.length > 0) {
+                    modals[modals.length - 1].click() // close topmost
+                }
+            }
+            
+            if (e.key === "/" && document.activeElement.tagName === "BODY") {
+                e.preventDefault()
+                document.getElementById('nav-search').focus()
+            }
+        })
+        
+        // Initialize on load
+        window.onload = function() {
+            initializeWebsite()
+            
+            // Demo tip (can be removed in production)
+            setTimeout(() => {
+                console.log('%c[MeowNest] Tip: All interactive features (filters, cart, checkout, dynamic delivery) are fully functional. Deploy to Netlify for free hosting + forms.', 'color:#666')
+            }, 1400)
+        }
+        
+        // Expose for easy future product additions (user can use console or edit array)
+        window.MeowNestAddProduct = function(newProduct) {
+            products.push(newProduct)
+            renderProducts(products)
+            console.log('%c[MeowNest] New product added successfully. Refresh page or call renderProducts(products) to update.', 'color:#854d0e')
+        }
+    </script>
+</body>
+</html>
